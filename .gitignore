@@ -1,0 +1,10 @@
+.DS_Store
+.vscode
+
+*.a
+*.o
+obj/
+
+.exec00
+.exec01
+.exec02
