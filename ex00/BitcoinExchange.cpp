@@ -1,5 +1,6 @@
 
 #include "BitcoinExchange.hpp"
+#include <sstream>
 
 // === CANONICAL FORM === 
 
@@ -27,6 +28,7 @@ void BitcoinExchange::loadDB(const std::string &file)
 {
 	std::string sep = ",";
 	std::string buffer;
+	float fValue;
 
 	std::ifstream readFile(file);
 	if (!readFile)
@@ -42,11 +44,28 @@ void BitcoinExchange::loadDB(const std::string &file)
 		{
 			std:: string key = buffer.substr(0, pos);
 			std:: string value = buffer.substr(pos + 1);
-			std::cout << "key: " << key << " value: " << value <<  std::endl;
+
+			std::istringstream convertValue(value);
+			convertValue >> fValue;
+
+			_data.insert(std::make_pair(key, fValue));
+			
+			
+			//std::cout << "key: " << key << " value: " << value <<  std::endl;
 
 		}
 	}
-
+	
+	std::map<std::string, float>::iterator it;
+	std::map<std::string, float>::iterator it1;
+	it = _data.begin();
+	it1 = _data.end();
+	
+	while (it  != it1)
+	{
+		std::cout << "key: " << it->first << " value: " << it->second << std::endl;
+		it++;
+	}
 
 	readFile.close();
 }
