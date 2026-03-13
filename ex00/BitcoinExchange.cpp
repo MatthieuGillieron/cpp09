@@ -27,7 +27,6 @@ void BitcoinExchange::loadDB(const std::string &file)
 {
 	std::string sep = ",";
 	std::string buffer;
-	std::string value = "";
 
 	std::ifstream readFile(file);
 	if (!readFile)
@@ -42,7 +41,8 @@ void BitcoinExchange::loadDB(const std::string &file)
 		if (pos != std::string::npos)
 		{
 			std:: string key = buffer.substr(0, pos);
-			std::cout << "trouver le sep" << key << std::endl;
+			std:: string value = buffer.substr(pos + 1);
+			std::cout << "key: " << key << " value: " << value <<  std::endl;
 
 		}
 	}
