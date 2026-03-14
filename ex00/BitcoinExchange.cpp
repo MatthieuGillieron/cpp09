@@ -36,7 +36,7 @@ void BitcoinExchange::loadDB(const std::string &file)
 		std::cout << "Cannot open this file" << std::endl;
 		return;
 	}
-
+	getline(readFile, buffer);
 	while (getline(readFile, buffer))
 	{
 		size_t pos = buffer.find(sep);
@@ -50,31 +50,25 @@ void BitcoinExchange::loadDB(const std::string &file)
 
 			_data.insert(std::make_pair(key, fValue));
 			
-			
-			//std::cout << "key: " << key << " value: " << value <<  std::endl;
-
 		}
 	}
-	
-	std::map<std::string, float>::iterator it;
-	std::map<std::string, float>::iterator it1;
-	it = _data.begin();
-	it1 = _data.end();
-	
-	while (it  != it1)
-	{
-		std::cout << "key: " << it->first << " value: " << it->second << std::endl;
-		it++;
-	}
-
 	readFile.close();
 }
-
-// check si open, et non null
-
-
 
 // void checkInput(const std::string &file)
 // {
 
 // }
+
+
+
+	// std::map<std::string, float>::iterator it;
+	// std::map<std::string, float>::iterator it1;
+	// it = _data.begin();
+	// it1 = _data.end();
+	
+	// while (it  != it1)
+	// {
+	// 	std::cout << "key: " << it->first << " value: " << it->second << std::endl;
+	// 	it++;
+	// }
