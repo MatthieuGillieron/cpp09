@@ -8,6 +8,7 @@ int main()
 BitcoinExchange btc;
 btc.loadDB("data.csv");
 
+btc.checkInput("test.txt");
 
 
 

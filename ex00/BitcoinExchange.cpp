@@ -55,10 +55,51 @@ void BitcoinExchange::loadDB(const std::string &file)
 	readFile.close();
 }
 
-// void checkInput(const std::string &file)
-// {
+void BitcoinExchange::checkInput(const std::string &file)
+{
+	std::string sep = "|";
+	std::string buffer;
+	float fValue;
 
-// }
+	std::ifstream readFile(file);
+	if (!readFile)
+	{
+		std::cout << "Cannot open this file" << std::endl;
+		return;
+	}
+
+	getline(readFile, buffer);
+	while (getline(readFile, buffer))
+	{
+		size_t pos = buffer.find(sep);
+		if (pos != std::string::npos)
+		{
+			std::string key = buffer.substr(0, pos);
+			std::string value = buffer.substr(pos + 1);
+		
+			std::istringstream convertValue(value);
+			convertValue >> fValue;
+			
+			std::map<std::string, float>::iterator it = _data.lower_bound(key);
+			if (it->first ==  key)
+			{
+				float result = it ->second * fValue;
+				std::cout << key << " => " << fValue << " = " << result << std::endl;
+			}
+			else
+			{
+				it--;
+				float result = it->second * fValue;
+				std::cout << key << " => " << fValue << " = " << result << std::endl;
+
+			}
+
+		}
+		
+
+	}
+	readFile.close();
+}
 
 
 

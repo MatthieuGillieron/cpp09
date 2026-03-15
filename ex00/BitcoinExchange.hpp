@@ -24,7 +24,7 @@ class BitcoinExchange
 		~BitcoinExchange();
 
 		void loadDB(const std::string &file);
-		//void checkInput(const std::string &file);
+		void checkInput(const std::string &file);
 
 
 };
