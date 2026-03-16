@@ -80,6 +80,21 @@ void BitcoinExchange::checkInput(const std::string &file)
 			std::istringstream convertValue(value);
 			convertValue >> fValue;
 			
+			if (fValue < 0 || fValue > 1000)
+			{
+				if (fValue < 0)
+				{
+					std::cout << "Error: not a positive number" << std::endl;
+					continue;
+				}
+
+				else
+				{
+					std::cout << "Error: too large a number" << std::endl;
+					continue;
+				}
+			}
+			
 			std::map<std::string, float>::iterator it = _data.lower_bound(key);
 			if (it->first ==  key)
 			{
@@ -95,6 +110,8 @@ void BitcoinExchange::checkInput(const std::string &file)
 			}
 
 		}
+		else
+			std::cout << "Error: bad input" << std::endl;
 		
 
 	}
@@ -102,6 +119,20 @@ void BitcoinExchange::checkInput(const std::string &file)
 }
 
 
+
+// $> ./btc
+// Error: could not open file.
+// $> ./btc input.txt
+// 2011-01-03 => 3 = 0.9
+// 2011-01-03 => 2 = 0.6
+// 2011-01-03 => 1 = 0.3
+// 2011-01-03 => 1.2 = 0.36
+// 2011-01-09 => 1 = 0.32
+// Error: not a positive number.
+// Error: bad input => 2001-42-42
+// 2012-01-11 => 1 = 7.1
+// Error: too large a number.
+// $>
 
 	// std::map<std::string, float>::iterator it;
 	// std::map<std::string, float>::iterator it1;
