@@ -112,10 +112,14 @@ void BitcoinExchange::checkInput(const std::string &file)
 		}
 		else
 			std::cout << "Error: bad input => " << buffer << std::endl;
-
 	}
 	readFile.close();
 }
+
+
+
+//void parseFile()
+
 
 
 
