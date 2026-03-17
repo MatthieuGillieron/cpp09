@@ -11,7 +11,7 @@ class RPN
 {
 
 	private :
-			std::stack<int> stack;
+			std::stack<int> _stack;
 
 
 	public:
