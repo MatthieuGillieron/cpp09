@@ -12,6 +12,9 @@ class RPN
 
 	private :
 			std::stack<int> _stack;
+			bool _isDgit(std::string &token);
+			bool _isOperator(const std::string &op);
+
 
 
 	public:
@@ -20,7 +23,7 @@ class RPN
 		RPN &operator=(const RPN &other);
 		~RPN();
 
-	void process(const std::string &expression);
+		void process(const std::string &input);
 
 };
 
