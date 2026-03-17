@@ -1,6 +1,12 @@
 
+#include "RPN.hpp"
 
-int main()
+int main(int ac, char **av)
 {
-	
+	if (ac != 2)
+	{
+		std::cout << "exec: ./RPN <calcul>" << std::endl;
+		return 1;
+	}
+
 }
