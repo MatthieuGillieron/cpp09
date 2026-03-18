@@ -87,12 +87,13 @@ void RPN::process(const std::string &input)
 				_stack.push(Itoken);
 			}
 
-			if (_isOperator(token))
+			else if (_isOperator(token))
 			{
 				int result = _calcul(token);
 				_stack.push(result);
-
 			}
+			else
+				throw std::invalid_argument("error");
 		}
 		std::cout << _stack.top() << std::endl;
 	}
