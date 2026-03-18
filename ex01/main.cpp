@@ -8,5 +8,7 @@ int main(int ac, char **av)
 		std::cout << "exec: ./RPN <calcul>" << std::endl;
 		return 1;
 	}
-
+	
+	RPN rpn;
+	rpn.process(av[1]);
 }

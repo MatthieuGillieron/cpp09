@@ -5,6 +5,7 @@
 #include <string>
 #include <iostream>
 #include <stack>
+#include <sstream>
 
 
 class RPN
@@ -14,6 +15,7 @@ class RPN
 			std::stack<int> _stack;
 			bool _isDgit(std::string &token);
 			bool _isOperator(const std::string &op);
+			int _calcul(const std::string &op);
 
 
 
