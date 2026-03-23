@@ -16,6 +16,11 @@ class PmergeMe
 
 	public:
 
+		PmergeMe();
+		PmergeMe(const PmergeMe &other);
+		PmergeMe & operator=(const PmergeMe &other);
+		~PmergeMe();
+
 		void parseInput(int ac, char **av);
 		void sortVector();
 		void sortDeque();
