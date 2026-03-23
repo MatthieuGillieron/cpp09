@@ -7,6 +7,9 @@
 #include <deque>
 #include <ctime>
 #include <exception>
+#include <climits>
+#include <cstdlib>
+#include <stdexcept>
 
 class PmergeMe
 {
@@ -15,6 +18,9 @@ class PmergeMe
 
 		std::vector<int> _vec;
 		std::deque<int> _deq;
+		
+		void fordJohnsonVec(std::vector<int> &vec);
+    	void fordJohnsonDeq(std::deque<int> &deq);
 
 	public:
 
