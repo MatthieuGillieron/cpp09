@@ -112,5 +112,5 @@ void PmergeMe::binaryInsertVec(std::vector<int> &vec, int val, int end)
 		else
 			right = mid;
 	}
-	vec.insert(vec.begin(), + left, val);
+	vec.insert(vec.begin() + left, val);
 }
