@@ -54,3 +54,52 @@ void PmergeMe::parseInput(int ac, char **av)
 	}
 
 }
+
+void PmergeMe::fordJohnsonVec(std::vector<int> &vec)
+{
+	int impair = -1;
+	if (vec.size() <= 1)
+		return;
+
+	if (vec.size() % 2 != 0)
+		impair = vec.back();
+	
+	std::vector<int> big;
+	std::vector<int> little;
+
+	for (int i = 0; i + 1 < (int)vec.size(); i += 2)
+	{
+		if (vec[i] < vec [i + 1])
+		{
+			little.push_back(vec[i]);
+			big.push_back(vec[i + 1]);
+
+		}
+		else
+		{
+			big.push_back(vec[i]);
+			little.push_back(vec[i + 1]);
+		}
+
+	}
+	fordJohnsonVec(big);
+	big.insert(big.begin(), little[0]);
+}
+
+
+int PmergeMe::jacobsthal(int n)
+{
+	if ( n == 0)
+		return 0;
+	if (n == 1)
+		return 1;
+	else
+		n = jacobsthal(n-1) + 2 * jacobsthal(n-2);
+
+	return n;
+}
+
+void PmergeMe::binaryInsertVec(std::vector<int> &vec, int val, int end)
+{
+	
+}
