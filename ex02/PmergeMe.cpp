@@ -101,5 +101,16 @@ int PmergeMe::jacobsthal(int n)
 
 void PmergeMe::binaryInsertVec(std::vector<int> &vec, int val, int end)
 {
-	
+	int left = 0;
+	int right = end;
+
+	while (left < right)
+	{
+		int mid = (left + right) / 2;
+		if (val > vec[mid])
+			left = mid + 1;
+		else
+			right = mid;
+	}
+	vec.insert(vec.begin(), + left, val);
 }
