@@ -21,6 +21,8 @@ class PmergeMe
 		
 		void fordJohnsonVec(std::vector<int> &vec);
     	void fordJohnsonDeq(std::deque<int> &deq);
+		void binaryInsertVec(std::vector<int> &vec, int val, int end);
+		int  jacobsthal(int n);
 
 	public:
 
