@@ -11,6 +11,7 @@
 #include <cstdlib>
 #include <stdexcept>
 #include <algorithm>
+#include <iostream>
 
 
 class PmergeMe
@@ -40,7 +41,7 @@ class PmergeMe
 		void parseInput(int ac, char **av);
 		void sortVector();
 		void sortDeque();
-		void displayResult();
+		void displayResult(std::string when);
 		void displayTime();
 
 

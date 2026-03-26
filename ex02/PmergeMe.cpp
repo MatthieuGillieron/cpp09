@@ -226,3 +226,20 @@ void PmergeMe::sortDeque()
 
 	_timeDeq = (double)(end - start) / CLOCKS_PER_SEC * 1000000;
 } 
+
+
+// === 	DISPLAY ===
+
+void PmergeMe::displayResult(std::string when)
+{
+	std::cout << when << ": ";
+	for (int i = 0; i < (int)_vec.size(); i++)
+		std::cout << _vec[i] << " ";
+	std::cout << std::endl;
+}
+
+
+void PmergeMe::displayTime()
+{
+
+}
