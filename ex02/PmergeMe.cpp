@@ -242,6 +242,8 @@ void PmergeMe::displayResult(std::string when)
 void PmergeMe::displayTime()
 {
 	
+   std::cout << std::fixed << std::setprecision(5);
+
 	std::cout << "Time to process a range of " <<  _vec.size() << " elements with std::vector : ";
 	std::cout << _timeVec << " us" << std::endl;
 
