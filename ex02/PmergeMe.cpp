@@ -55,6 +55,9 @@ void PmergeMe::parseInput(int ac, char **av)
 
 }
 
+
+// ===  SORT FOR VECTOR ===
+
 void PmergeMe::fordJohnsonVec(std::vector<int> &vec)
 {
 	int impair = -1;
@@ -132,3 +135,94 @@ void PmergeMe::binaryInsertVec(std::vector<int> &vec, int val, int end)
 	}
 	vec.insert(vec.begin() + left, val);
 }
+
+
+// === SORT FOR DEQUE ===
+
+
+
+void PmergeMe::fordJohnsonDeque(std::deque<int> &deq)
+{
+	int impair = -1;
+	if (deq.size() <= 1)
+		return;
+
+	if (deq.size() % 2 != 0)
+		impair = deq.back();
+	
+	std::deque<int> big;
+	std::deque<int> little;
+
+	for (int i = 0; i + 1 < (int)deq.size(); i += 2)
+	{
+		if (deq[i] < deq [i + 1])
+		{
+			little.push_back(deq[i]);
+			big.push_back(deq[i + 1]);
+
+		}
+		else
+		{
+			big.push_back(deq[i]);
+			little.push_back(deq[i + 1]);
+		}
+
+	}
+	std::deque<int> orginalBig = big;
+	fordJohnsonDeque(big);
+	big.insert(big.begin(), little[0]);
+	
+	int n = 1;
+	while (jacobsthal(n) < (int)little.size())
+	{
+		for (int i = jacobsthal(n); i > jacobsthal(n-1); i--)
+		{
+			std::deque<int>::iterator it = std::find(big.begin(), big.end(), orginalBig[i]);
+			int end = it - big.begin();
+
+			binaryInsertDeque(big, little[i], end);
+		}
+		n++;
+	}
+	if (impair != -1)
+		binaryInsertDeque(big, impair, big.size());
+
+	deq = big;
+}
+
+
+void PmergeMe::binaryInsertDeque(std::deque<int> &deq, int val, int end)
+{
+	int left = 0;
+	int right = end;
+
+	while (left < right)
+	{
+		int mid = (left + right) / 2;
+		if (val > deq[mid])
+			left = mid + 1;
+		else
+			right = mid;
+	}
+	deq.insert(deq.begin() + left, val);
+}
+
+
+void PmergeMe::sortVector()
+{
+	clock_t start = clock();
+	fordJohnsonVec(_vec);
+	clock_t end = clock();
+
+	_timeVec = (double)(end - start) / CLOCKS_PER_SEC * 1000000;
+}
+
+
+void PmergeMe::sortDeque()
+{
+	clock_t start = clock();
+	fordJohnsonDeque(_deq);
+	clock_t end = clock();
+
+	_timeDeq = (double)(end - start) / CLOCKS_PER_SEC * 1000000;
+} 

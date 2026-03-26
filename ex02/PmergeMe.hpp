@@ -20,10 +20,14 @@ class PmergeMe
 
 		std::vector<int> _vec;
 		std::deque<int> _deq;
+		double _timeVec;
+    	double _timeDeq;
 		
 		void fordJohnsonVec(std::vector<int> &vec);
-    	void fordJohnsonDeq(std::deque<int> &deq);
+    	void fordJohnsonDeque(std::deque<int> &deq);
 		void binaryInsertVec(std::vector<int> &vec, int val, int end);
+		void binaryInsertDeque(std::deque<int> &deq, int val, int end);
+
 		int  jacobsthal(int n);
 
 	public:
