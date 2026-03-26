@@ -82,8 +82,26 @@ void PmergeMe::fordJohnsonVec(std::vector<int> &vec)
 		}
 
 	}
+	std::vector<int> orginalBig = big;
 	fordJohnsonVec(big);
 	big.insert(big.begin(), little[0]);
+	
+	int n = 1;
+	while (jacobsthal(n) < (int)little.size())
+	{
+		for (int i = jacobsthal(n); i > jacobsthal(n-1); i--)
+		{
+			std::vector<int>::iterator it = std::find(big.begin(), big.end(), orginalBig[i]);
+			int end = it - big.begin();
+
+			binaryInsertVec(big, little[i], end);
+		}
+		n++;
+	}
+	if (impair != -1)
+		binaryInsertVec(big, impair, big.size());
+
+	vec = big;
 }
 
 

@@ -10,6 +10,8 @@
 #include <climits>
 #include <cstdlib>
 #include <stdexcept>
+#include <algorithm>
+
 
 class PmergeMe
 {
