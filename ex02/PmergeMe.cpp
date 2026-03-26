@@ -37,7 +37,7 @@ void PmergeMe::parseInput(int ac, char **av)
 		{
 			if (!isdigit(av[i][j]))
 			{
-				throw std::runtime_error("error: only digit is requiert");
+				throw std::runtime_error("error: only positif digit is requiert");
 				return;
 			}
 		}
@@ -45,7 +45,7 @@ void PmergeMe::parseInput(int ac, char **av)
 		long val = std::strtol(av[i], NULL, 10);
 		if (val < 0 || val > INT_MAX)
 		{
-			throw std::runtime_error("error: range autorized: 0 - 2147483647");
+			throw std::runtime_error("error: range autorized: 0 to 2147483647");
 			return;
 		}
 		_vec.push_back(val);
