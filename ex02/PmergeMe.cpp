@@ -241,5 +241,10 @@ void PmergeMe::displayResult(std::string when)
 
 void PmergeMe::displayTime()
 {
+	
+	std::cout << "Time to process a range of " <<  _vec.size() << " elements with std::vector : ";
+	std::cout << _timeVec << " us" << std::endl;
 
+	std::cout << "Time to process a range of " <<  _vec.size() << " elements with std::deque : ";
+	std::cout << _timeDeq << " us" << std::endl;
 }
